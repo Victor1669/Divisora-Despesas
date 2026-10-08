@@ -2,21 +2,30 @@ name: Testes
 
 on:
   push:
-    branches: [main]
+    branches: [master]
+    paths: [Backend/**]
   pull_request:
+    paths: [Backend/**]
+
+defaults:
+  run:
+    working-directory: Backend
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: pnpm/action-setup@v4
-
-      - uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v6
         with:
-          node-version: 22
+          package_json_file: Backend/package.json
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
           cache: pnpm
+          cache-dependency-path: Backend/pnpm-lock.yaml
 
       - run: pnpm install --frozen-lockfile
 
