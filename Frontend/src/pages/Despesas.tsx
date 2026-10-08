@@ -18,6 +18,7 @@ import {
 } from "react-bootstrap";
 import { criarDespesa, listarDespesas } from "../services/despesas";
 import { listarUsuarios } from "../services/usuarios";
+import { PagarDespesa } from "../components/PagarDespesa";
 
 export async function loader() {
   const [despesas, usuarios] = await Promise.all([
@@ -75,12 +76,7 @@ export function Component() {
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label>Valor (R$)</Form.Label>
-                <Form.Control
-                  type="number"
-                  step="0.01"
-                  name="valor"
-                  required
-                />
+                <Form.Control type="number" step="0.01" name="valor" required />
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label>Pago Por</Form.Label>
@@ -117,7 +113,7 @@ export function Component() {
         </Col>
         <Col md={8}>
           <Card className="p-4 shadow-sm">
-            <h4>Histórico de Despesas</h4>
+            <h4>Despesas em Aberto</h4>
             <Table responsive striped bordered hover className="mt-3">
               <thead>
                 <tr>
@@ -146,6 +142,7 @@ export function Component() {
                           </li>
                         ))}
                       </ul>
+                      <PagarDespesa despesa={item} />
                     </td>
                     <td>{new Date(item.createdAt).toLocaleDateString()}</td>
                   </tr>

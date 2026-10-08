@@ -3,11 +3,13 @@ import {
   PrimaryGeneratedColumn,
   Column,
   ManyToOne,
+  OneToMany,
   JoinColumn,
   Relation,
 } from "typeorm";
 
 import { Expense } from "./ExpenseModel";
+import { ExpensePayment } from "./ExpensePaymentModel";
 import { User } from "./UserModel";
 
 @Entity("expense_splits")
@@ -37,6 +39,9 @@ export class ExpenseSplit {
   @Column({ type: "boolean", default: false })
   pago: boolean;
 
+  @OneToMany(() => ExpensePayment, (pagamento) => pagamento.split)
+  pagamentos: Relation<ExpensePayment[]>;
+
   constructor(
     id: number,
     despesaId: number,
@@ -45,6 +50,7 @@ export class ExpenseSplit {
     usuario: Relation<User> | undefined,
     valorDevido: number,
     pago: boolean,
+    pagamentos: Relation<ExpensePayment[]>,
   ) {
     this.id = id;
     this.despesaId = despesaId;
@@ -53,5 +59,6 @@ export class ExpenseSplit {
     this.usuario = usuario;
     this.valorDevido = valorDevido;
     this.pago = pago;
+    this.pagamentos = pagamentos;
   }
 }

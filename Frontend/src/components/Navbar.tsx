@@ -30,6 +30,9 @@ export function Navbar() {
             <Nav.Link as={NavLink} to="/despesas">
               Despesas
             </Nav.Link>
+            <Nav.Link as={NavLink} to="/historico">
+              Histórico
+            </Nav.Link>
             {admin && (
               <Nav.Link as={NavLink} to="/participantes">
                 Participantes

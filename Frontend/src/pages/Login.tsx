@@ -1,6 +1,5 @@
 import {
   Form as RouterForm,
-  Link,
   redirect,
   type ActionFunctionArgs,
 } from "react-router";
@@ -46,9 +45,6 @@ export function Component() {
             Entrar
           </Button>
         </RouterForm>
-        <p className="mt-3 mb-0 text-center">
-          Não tem conta? <Link to="/cadastro">Cadastre-se</Link>
-        </p>
       </Card>
     </Container>
   );

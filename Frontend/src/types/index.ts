@@ -15,12 +15,21 @@ export interface UserType {
   senha: string;
 }
 
+export interface PagamentoType {
+  id: number;
+  splitId: number;
+  valor: string;
+  createdAt: string;
+}
+
 export interface ExpenseSplitType {
   id: number;
   despesaId: number;
   usuarioId: number;
+  usuario: { id: number; nome: string };
   valorDevido: string;
   pago: boolean;
+  pagamentos: PagamentoType[];
 }
 
 export interface ExpenseType {

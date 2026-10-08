@@ -11,6 +11,13 @@ export interface LoginBody {
   senha: string;
 }
 
-export type CreateExpenseBody = Omit<Expense, "id" | "createdAt" | "splits"> & {
+export interface PagamentoBody {
+  valor: number;
+}
+
+export type CreateExpenseBody = Omit<
+  Expense,
+  "id" | "createdAt" | "splits" | "pagoPor"
+> & {
   splits: { usuarioId: number; valorDevido: number }[];
 };

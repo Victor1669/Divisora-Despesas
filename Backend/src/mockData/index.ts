@@ -42,6 +42,7 @@ const mockExpenseSplit: ExpenseSplit = {
   usuario: mockUserBeltrano,
   valorDevido: 100,
   pago: false,
+  pagamentos: [],
 };
 
 export { mockUserFulano, mockUserBeltrano, mockExpense, mockExpenseSplit };

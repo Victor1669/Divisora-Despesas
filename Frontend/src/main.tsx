@@ -15,7 +15,6 @@ const router = createBrowserRouter([
     errorElement: <Erro />,
     children: [
       { path: "/login", lazy: () => import("./pages/Login") },
-      { path: "/cadastro", lazy: () => import("./pages/Cadastro") },
       {
         path: "/",
         loader: carregarUsuario,
@@ -27,6 +26,7 @@ const router = createBrowserRouter([
             children: [
               { index: true, lazy: () => import("./pages/Dashboard") },
               { path: "despesas", lazy: () => import("./pages/Despesas") },
+              { path: "historico", lazy: () => import("./pages/Historico") },
               {
                 path: "participantes",
                 lazy: () => import("./pages/Participantes"),

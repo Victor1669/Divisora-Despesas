@@ -4,6 +4,7 @@ import { DataSource } from "typeorm";
 import { User } from "../models/UserModel";
 import { Expense } from "../models/ExpenseModel";
 import { ExpenseSplit } from "../models/ExpenseSplitModel";
+import { ExpensePayment } from "../models/ExpensePaymentModel";
 
 const AppDataSource = new DataSource({
   type: "mysql",
@@ -12,7 +13,7 @@ const AppDataSource = new DataSource({
   username: process.env.DATABASE_USERNAME,
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE,
-  entities: [User, Expense, ExpenseSplit],
+  entities: [User, Expense, ExpenseSplit, ExpensePayment],
   migrations: ["src/migrations/*.ts"],
   synchronize: false,
 });
